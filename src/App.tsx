@@ -9,33 +9,33 @@ import glamgradients from "./assets/icons/glamgradients.png"
 import onboarding from "./assets/icons/onboarding.png"
 import './App.css';
 
-const { Header: AntHeader, Sider, Content } = Layout;
+const { Header: AntHeader, Sider, Content, Footer } = Layout;
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [currentStep, setCurrentStep] = useState<number>(0); // 0 = LandingPage, 1-3 = Onboarding Steps
-  const [completedCount, setCompletedCount] = useState<number>(0); // Tracks how many users completed onboarding
-  const [selectedKey, setSelectedKey] = useState<string>('1'); // Tracks which menu is selected
+  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [completedCount, setCompletedCount] = useState<number>(0);
+  const [selectedKey, setSelectedKey] = useState<string>('1');
 
-  // Start the onboarding process
+
   const startOnboarding = () => setCurrentStep(1);
 
-  // Go to the next step
+
   const nextStep = () => setCurrentStep((prevStep) => prevStep + 1);
 
-  // Finish onboarding and update the analytics
+
   const finishOnboarding = () => {
-    setCompletedCount((prevCount) => prevCount + 1); // Increment the count
-    setCurrentStep(0); // Reset to the landing page
+    setCompletedCount((prevCount) => prevCount + 1);
+    setCurrentStep(0);
 
   };
 
   const handleMenuClick = (e: { key: string }) => {
-    setSelectedKey(e.key); // Update selected menu item
+    setSelectedKey(e.key);
     if (e.key === '1') {
-      setCurrentStep(0); // Show the landing page / analytics dashboard
+      setCurrentStep(0);
     } else {
-      setCurrentStep(1); // Go to onboarding steps by default when menu item 2 or 3 is clicked
+      setCurrentStep(1);
     }
   };
 
@@ -48,28 +48,28 @@ const App: React.FC = () => {
           mode="inline"
           selectedKeys={[selectedKey]}
           onClick={handleMenuClick}
-          style={{marginTop:"10%"}}
+          style={{ marginTop: "10%" }}
         >
-          {/* Using an img tag to display the custom image as the icon */}
+
           <Menu.Item key="1" icon={<img src={analyticsIcon} alt="Analytics Icon" style={{ width: '20px', height: '20px', filter: 'invert(1) brightness(5)' }} />}>
             Analytics Dashboard
           </Menu.Item>
-          <Menu.Item key="2"  icon={<img src={onboarding} alt="Analytics Icon" style={{ width: '20px', height: '20px', filter: 'invert(1) brightness(5)' }} />}>
+          <Menu.Item key="2" icon={<img src={onboarding} alt="Analytics Icon" style={{ width: '20px', height: '20px', filter: 'invert(1) brightness(5)' }} />}>
             Onboarding Steps
           </Menu.Item>
-        
+
         </Menu>
       </Sider>
       <Layout>
-      <AntHeader
+        <AntHeader
           style={{
             padding: 0,
             background: `url(${glamgradients}) no-repeat center center`,
-            backgroundSize: 'cover',  // Ensures the image covers the header area
+            backgroundSize: 'cover',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: '64px', // Set the height of the header as needed
+            height: '64px',
           }}
         >
           <Button
@@ -83,7 +83,7 @@ const App: React.FC = () => {
             }}
           />
         </AntHeader>
-       
+
         <Content
           style={{
             margin: '24px 16px',
@@ -112,10 +112,23 @@ const App: React.FC = () => {
             />
           )}
 
-          {/* You can add more content for other sections if required */}
         </Content>
+
+        <Footer     style={{
+            padding: 0,
+            background: `url(${glamgradients}) no-repeat center center`,
+            backgroundSize: 'cover',
+            display: 'flex',
+           
+            alignItems: 'center',
+            justifyContent:"center",
+            height: "10vh",
+            textAlign:"center"
+          }} >
+          GLAM  ©{new Date().getFullYear()} Created by Roman Binshtok
+        </Footer>
       </Layout>
- 
+
     </Layout>
   );
 };

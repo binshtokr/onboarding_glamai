@@ -1,4 +1,4 @@
-// src/components/OnboardingControllerStep.tsx
+
 import React from "react";
 
 interface OnboardingControllerStepProps {
@@ -9,15 +9,15 @@ interface OnboardingControllerStepProps {
 
 const videoStyle: React.CSSProperties = {
   maxWidth: "20vw",
-  display: "block", // Ensures that the video element is block-level and centered
-  margin: "0 auto", // Centers the video horizontally
+  display: "block",
+  margin: "0 auto",
 };
 
 const textStyle: React.CSSProperties = {
-  fontSize: "2rem",  // Increase the text size
-  textAlign: "center", // Center the text horizontally
-  marginBottom: "20px", // Add space below the text
-  fontWeight: "bold", // Make the text bold (optional)
+  fontSize: "2rem",
+  textAlign: "center",
+  marginBottom: "20px",
+  fontWeight: "bold",
 };
 
 const OnboardingControllerStep: React.FC<OnboardingControllerStepProps> = ({
@@ -72,7 +72,7 @@ const OnboardingControllerStep: React.FC<OnboardingControllerStepProps> = ({
   };
 
   return (
-    <div className="onboarding-step" style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "80vh" }}>
+    <div className="onboarding-step" style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
       {renderContent()}
       {step < 3 && <button onClick={onNext} style={{ marginTop: "20px" }}>Next</button>}
       {step === 3 && <button onClick={onFinish} style={{ marginTop: "20px" }}>Finish</button>}
